@@ -1,11 +1,11 @@
 import React from 'react';
 
-function About(){
+function Pagina404(){
     return(
         <div>
-            <h1>About?</h1>
+            <h1>Pagina404</h1>
         </div>
     )
 } 
 
-export default About
+export default Pagina404
