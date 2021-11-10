@@ -17,6 +17,7 @@ function App() {
         <Route component={Home} path= "/main"  />
         <Route component={Chat} path= "/chat"  />
         <Route component={About} path= "/about"  />
+        <Route component={Pagina404} path= "*"  />
       </Switch>
     </BrowserRouter>
   );
