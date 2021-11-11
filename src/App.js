@@ -2,12 +2,18 @@ import './App.css';
 
 
 
-import Routes from './routes'
+import Routes from './routes';
+
+import {UsuarioProvider} from './contexts/user'
+
+import './services/firebase';
 
 function App() {
   return (
-    <Routes/>
-  )
+    <UsuarioProvider>
+      <Routes/>
+    </UsuarioProvider> 
+  );
 }
 
 export default App;
