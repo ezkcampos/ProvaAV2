@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import {Route as RectDOMRoute, useHistory} from 'react-router-dom';
 
-const Route = ( 
+const Route = ({ 
     isPrivate= false,
-    component: Component,
+    Component: Component,
     ...rest
-    )=>{
+    })=>{
         
         const history = useHistory();
 
