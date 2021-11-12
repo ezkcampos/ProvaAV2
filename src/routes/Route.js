@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, {useContext} from 'react';
 import {Route as RectDOMRoute, useHistory} from 'react-router-dom';
+
+import {UsuarioContext} from '../contexts/user';
 
 const Route = ({ 
     isPrivate= false,
@@ -7,11 +9,20 @@ const Route = ({
     ...rest
     })=>{
         
+        const {user, loading} = useContext(UsuarioContext)
+
         const history = useHistory();
 
-        const user = {
-            nome:'ezequiel'
+        if(loading){
+            return(
+                <div>
+                    <p>...carregando...</p>
+                </div>
+            )
         }
+      
+        //const user = null
+
 
         if (!(isPrivate === !!user)){
             history.push(isPrivate ? '/login':'/main');
