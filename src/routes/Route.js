@@ -5,7 +5,7 @@ import {UsuarioContext} from '../contexts/user';
 
 const Route = ({ 
     isPrivate= false,
-    Component: Component,
+    component: Component,
     ...rest
     })=>{
         

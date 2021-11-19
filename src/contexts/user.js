@@ -27,38 +27,39 @@ const UsuarioProvider = ({children}) =>{
         })
     },[])
 
-    const signIn = async (email,password) =>{
-        signInWithEmailAndPassword(auth,email,password)
-        .then(resp =>{
-            console.log(resp)
-        }).catch(err=>{
-            console.log(err)
-        })
+    async function signIn(email, password) {
+        signInWithEmailAndPassword(auth, email, password)
+            .then(resp => {
+                console.log(resp);
+            }).catch(err => {
+                console.log(err);
+            });
     }
 
-    const signOut = async () =>{
+    async function signOut() {
         signOutFirebase(auth)
-        .then(resp =>{
-            console.log('Usuário Deslogado')
-        }).catch(err=>{
-            console.log(err)
-        })
+            .then(resp => {
+                console.log('Usuário Deslogado');
+            }).catch(err => {
+                console.log(err);
+            });
     }
 
-    const signUp = async (email,password) =>{
-        createUserWithEmailAndPassword(auth,email,password)
-        .then(resp =>{
-            console.log('cadastro concluído')
-        }).catch(err=>{
-            console.log(err)
-        })
+    async function signUp(email, password) {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(resp => {
+                console.log('cadastro concluído');
+            }).catch(err => {
+                console.log(err);
+            });
     }
     
     return (
-        <UsuarioContext.Provider value={{user,loading}}>
+        <UsuarioContext.Provider value={{user,loading, signIn, signOut, signUp}}>
             {children}
         </UsuarioContext.Provider>
     )
 }
 
 export {UsuarioContext,UsuarioProvider}
+    
