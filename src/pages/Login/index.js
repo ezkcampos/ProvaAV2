@@ -6,7 +6,9 @@ import {
     Main,
     Header,
     Content,
-    Footer
+    Footer,
+    ContainerLogoPharse,
+    ContainerSignIn
 } from './styles'
 
 function Login(){
@@ -36,15 +38,72 @@ function Login(){
     return(
        <Main>
            <Header>
-                <p>Header</p>
+             
            </Header>
 
            <Content>
-           <p>Content</p>
+             
+             <ContainerLogoPharse>
+             <div id="logo">
+                  <img src="/images/logo_branco.png" width="290px" alt=""/>
+              </div>
+              <div id="pharse">
+                <p>Problemas para formar</p>
+                <p>um grupo de trabalho?</p>
+                <p>o Web Menssage resolve!</p>
+              </div>
+            </ContainerLogoPharse>
+            
+            <ContainerSignIn>
+                <div id="containerLogin">
+                    <div id="containerButtons">
+                        <div class="button">
+                            Membro
+                         </div>
+                         <div class="button inativo">
+                            Convidado
+                         </div>    
+                     </div>   
+                     <div class="box">
+                        <div class="title">Email</div>
+                        <input placeholder="Digite seu Email"/>
+                     </div>
+                     <div class="box">
+                        <div class="title">Senha</div>
+                        <input placeholder="Digite sua Senha"/>
+                     </div>
+
+                    <div class="forgotCredentials">Esqueci minha senha </div>
+                    <div id="containerLoginOrJoin">
+                        <div class="button invert" onClick={handleCadastrar}>
+                            Cadastre-se
+                        </div> 
+                        <div class="button" onClick={handleLogin}>
+                            Entrar
+                        </div>  
+                    </div>    
+
+                </div>
+                
+            </ContainerSignIn>
+             
            </Content>
 
            <Footer>
-           <p>Footer</p>
+            <div id="Logo">
+                <img src="/images/logo_branco.png" width="120px" alt=""/>
+            </div>
+
+            <div id="about">
+                <p>Contato</p>
+                <p>ezequiel@grupou.com</p>
+            </div>
+
+            <div id="Social">
+                <img src="/images/logo_linkedin.png" width="50px" alt=""/>
+                <img src="/images/logo_face.png" width="50px" alt=""/>
+                <img src="/images/logo_insta.png" width="50px" alt=""/>
+            </div>
            </Footer>
        </Main>
         
