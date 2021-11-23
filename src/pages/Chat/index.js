@@ -1,88 +1,94 @@
 import React,{useContext,useState,useEffect} from 'react';
-
 import {UsuarioContext} from '../../contexts/user';
-
 import firebaseApp from '../../services/firebase';
-
-import {getFirestore,addDoc, collection,onSnapshot,query,where} from "firebase/firestore";
+import {getFirestore,addDoc, collection,onSnapshot,query,orderBy} from "firebase/firestore";
 import { async } from '@firebase/util';
 
-function Chat(){
+let Chat=()=>{
 
     const db = getFirestore(firebaseApp);
 
-    const [newMessage, setNewMessages]= useState ([])
-
     const [messages, setMessages]= useState ([])
-
-
 
     const {user, signOut} = useContext(UsuarioContext)
 
+    let nome = '';
+    if (user){
+        nome = user.email.split("@", 2);
+
+        nome = nome[0];
+
+        nome = nome.toUpperCase();
+    }
+
     useEffect(()=>{
-        const unsub = onSnapshot(query(collection(db,"mensagens"),where("lido","!=",true))
-        ,(querySnapshot)=>{
+        const unsub = onSnapshot(query(collection(db,"mensagens"),orderBy('data')),(QuerySnapshot)=>{
             const tmp = [];
 
-            querySnapshot.forEach(async (document)=>{
+            QuerySnapshot.forEach(async(document)=>{
                 tmp.push({
                     id: document.id,
                     ...document.data()
-                })
-            })
-
-            setMessages(tmp)
+                });
+            });
+            setMessages(tmp);
         });
-
         return()=>{
-            unsub()
+            unsub();
         }
 
-    },[])
+    },[]);
     
-    
-async function handleMessage(){
-    try{
-        await addDoc(collection(db, 'mensagens'),{
-            mensagem: 'Flamengo',
-            lido:false
-        })
-    }catch(err){
-        console.log(err);
+    const handleMessage = async()=>{
+        let inputMensagens = document.getElementById('inputMensagem');
+        let data = new Date()
+        try{
+            if(inputMensagens.value.length <= 30){
+                await addDoc(collection(db, 'mensagens'),{
+                    mensagem: inputMensagens.value,
+                    data: data,
+                    idEmail: user.email,
+                    nome: nome
+                }).then(()=>{
+                    inputMensagens.value = inputMensagens.defaultValue;
+                });
+            }
+            else{
+                alert("Numero Maximo de Caracteres: 30");
+            }
+            
+        }catch(erro){
+            console.log(erro);
+        }
     }
-}
 
-async function handleNewMessage(){
-    try{
-        await addDoc(collection(db, 'mensagens'),{
-            mensagem: newMessage,
-            lido:false
-        })
-    }catch(err){
-        console.log(err);
-    }
-}
+
 
 return (
     <div>
+        <header>
         <h1>Chat {user? user.email : ''}</h1>
-        
-        {messages.map((item)=>(
-            <p key={item.id}>
-                {item.id}
-            </p>
-        ))}
-        <div class="box">
-                    <div class="title">Mensagem</div>
-                    <input placeholder="Digite sua mensagem"/>
-        </div>
-        <button type="button" onClick={()=>{handleNewMessage()}}>Enviar SUA MENSAGEM</button>
-        <button type="button" onClick={()=>{handleMessage()}}>Enviar</button>
+        </header>
 
-        
+        <section>
+        <div class="chatBody">
+                        
+                        {messages.map((item)=>(
+                            
+                            <p key={item.id} class="chatContent">{item.nome} diz: {item.mensagem}</p>
+                        ))}
+                    </div>
+
+                    <div class="envioMensagem">
+                        <input type="text" placeholder="Digite sua mensagem" id="inputMensagem"/>
+                        <button type="button" id="btnEnviaMensagem" class="button" onClick={()=>{
+                            handleMessage();
+                        }}>Enviar</button>
+                    </div>
+        </section>
         <button type="button" onClick={()=>{signOut()}}>Sair</button>
     </div>
 )
 } 
 
-export default Chat
+export default Chat;
