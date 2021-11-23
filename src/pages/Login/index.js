@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React,{useContext,useState} from 'react';
 
 import {UsuarioContext} from '../../contexts/user'
 
@@ -11,28 +11,35 @@ import {
     ContainerSignIn
 } from './styles'
 
-function Login(){
+let Login=()=>{
 
     const {signIn,signUp} = useContext(UsuarioContext);
 
-    const [email,setEmail] = useState('ezk@fgv.com');
-    const [password,setPassword] = useState('123456');
+    let email = useState('');
+    let password = useState('');
+    
+    //const [email,setEmail] = useState(null);
+    //const [password,setPassword] = useState(null);
 
-    async function handleLogin() {
+    const handleLogin = async () =>{
         try {
-            await signIn(email, password);
-        } catch (err) {
-            console.log(err);
+            email = document.querySelector("#emailLogin").value;
+            password = document.querySelector("#senhaLogin").value
+            await signIn(email, password)
+        }catch(err){
+          console.log(err)
         }
-    }
-
-    async function handleCadastrar() {
+      }
+    
+      const handleCadastrar = async () =>{
         try {
-            await signUp(email, password);
-        } catch (err) {
-            console.log(err);
+            email = document.querySelector("#emailLogin").value;
+            password = document.querySelector("#senhaLogin").value
+            await signUp(email, password)
+        }catch(err){
+          console.log(err)
         }
-    }
+      }
 
 
     return(
@@ -65,12 +72,12 @@ function Login(){
                          </div>    
                      </div>   
                      <div class="box">
-                        <div class="title">Email</div>
-                        <input placeholder="Digite seu Email"/>
+                            <label for="emailLogin" class="title">Email</label>
+                            <input placeholder="Digite seu Email" type="text" id="emailLogin"/>
                      </div>
                      <div class="box">
-                        <div class="title">Senha</div>
-                        <input placeholder="Digite sua Senha"/>
+                            <label for="senhaLogin" class="title">Senha</label>
+                            <input placeholder="Digite sua Senha" type="password" id="senhaLogin"/>
                      </div>
 
                     <div class="forgotCredentials">Esqueci minha senha </div>

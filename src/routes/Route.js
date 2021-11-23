@@ -3,40 +3,35 @@ import {Route as RectDOMRoute, useHistory} from 'react-router-dom';
 
 import {UsuarioContext} from '../contexts/user';
 
-const Route = ({ 
-    isPrivate= false,
-    component: Component,
-    ...rest
-    })=>{
-        
-        const {user, loading} = useContext(UsuarioContext)
+function Route({
+    isPrivate = false, component: Component, ...rest
+}) {
 
-        const history = useHistory();
+    const { user, loading } = useContext(UsuarioContext);
 
-        if(loading){
-            return(
-                <div>
-                    <p>...carregando...</p>
-                </div>
-            )
-        }
-      
-        //const user = null
+    const history = useHistory();
 
+    if (loading) {
+        return (
+            <div>
+                <p>...carregando...</p>
+            </div>
+        );
+    }
 
-        if (!(isPrivate === !!user)){
-            history.push(isPrivate ? '/login':'/main');
-        }
+    //const user = null
+    if (!(isPrivate === !!user)) {
+        history.push(isPrivate ? '/login' : '/main');
+    }
 
-        return(
-            <RectDOMRoute {...rest}
-                render={(props)=>{
-                    return(
-                        <Component {...props} />
-                    )
-                }}
-                />
-        )
+    return (
+        <RectDOMRoute {...rest}
+            render={(props) => {
+                return (
+                    <Component {...props} />
+                );
+            } } />
+    );
 }
 
 export default Route;
