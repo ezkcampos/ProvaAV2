@@ -172,7 +172,7 @@ export const Footer = styled.div`
 
     #about p{
         font-size:12px;
-        line-height:2px;
+        line-height:1px;
     }
 
     #social{

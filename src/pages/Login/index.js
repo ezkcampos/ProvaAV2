@@ -45,15 +45,17 @@ let Login=()=>{
     return(
        <Main>
            <Header>
-             
+           <div id="logo">
+                  <img src="/images/WebMenssagebrancologo.png" width="350px" alt=""/>
+              </div>
            </Header>
 
            <Content>
              
              <ContainerLogoPharse>
-             <div id="logo">
-                  <img src="/images/logo_branco.png" width="290px" alt=""/>
-              </div>
+             <div id="Logo">
+                <img src="/images/logo_branco_2.png" width="350px" alt=""/>
+            </div>
               <div id="pharse">
                 <p>Problemas para formar</p>
                 <p>um grupo de trabalho?</p>
@@ -97,19 +99,16 @@ let Login=()=>{
            </Content>
 
            <Footer>
-            <div id="Logo">
-                <img src="/images/logo_branco.png" width="120px" alt=""/>
-            </div>
 
             <div id="about">
-                <p>Contato</p>
-                <p>ezequiel@grupou.com</p>
+                <p>Contato:</p>
+                <p>camposezek@gmail.com</p>
             </div>
 
             <div id="Social">
-                <img src="/images/logo_linkedin.png" width="50px" alt=""/>
-                <img src="/images/logo_face.png" width="50px" alt=""/>
-                <img src="/images/logo_insta.png" width="50px" alt=""/>
+                <img src="/images/linkedin.png" width="50px" alt=""/>
+                <img src="/images/facebook.png" width="50px" alt=""/>
+                <img src="/images/instagram.png" width="50px" alt=""/>
             </div>
            </Footer>
        </Main>

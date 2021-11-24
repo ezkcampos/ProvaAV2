@@ -4,7 +4,6 @@ import {useLocation, useHistory} from 'react-router-dom';
 function About(){
 
     let location = useLocation();
-    let {nome} = location.state || '';
     let history = useHistory();
 
     const handleClick = () =>{
@@ -13,7 +12,9 @@ function About(){
 
     return(
         <div>
-            <h1>About? {nome}</h1>
+            <h1>About</h1>
+            <p>Contato:</p>
+            <p>camposezek@gmail.com</p>
             <button type="button" onClick={handleClick}> Ir para o Chat </button>
         </div>
     )

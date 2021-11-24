@@ -1,8 +1,15 @@
 import React,{useContext,useState,useEffect} from 'react';
 import {UsuarioContext} from '../../contexts/user';
+import {
+    Main,
+    Header,
+    Content
+} from './styles'
 import firebaseApp from '../../services/firebase';
 import {getFirestore,addDoc, collection,onSnapshot,query,orderBy} from "firebase/firestore";
 import { async } from '@firebase/util';
+
+
 
 let Chat=()=>{
 
@@ -65,14 +72,19 @@ let Chat=()=>{
 
 
 return (
+    <Main>
     <div>
-        <header>
+        <Header>
+        <div id="logo">
+                  <img src="/images/WebMenssagelogo.png" width="150px" alt=""/>
+              </div>
         <h1>Chat {user? user.email : ''}</h1>
-        </header>
+        
+        
+        </Header>
 
         <section>
         <div class="chatBody">
-                        
                         {messages.map((item)=>(
                             
                             <p key={item.id} class="chatContent">{item.nome} diz: {item.mensagem}</p>
@@ -86,8 +98,10 @@ return (
                         }}>Enviar</button>
                     </div>
         </section>
+           
         <button type="button" onClick={()=>{signOut()}}>Sair</button>
     </div>
+    </Main>
 )
 } 
 
