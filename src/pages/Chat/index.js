@@ -1,9 +1,7 @@
 import React,{useContext,useState,useEffect} from 'react';
 import {UsuarioContext} from '../../contexts/user';
 import {
-    Main,
-    Header,
-    Content
+    Main
 } from './styles'
 import firebaseApp from '../../services/firebase';
 import {getFirestore,addDoc, collection,onSnapshot,query,orderBy} from "firebase/firestore";
@@ -72,19 +70,29 @@ let Chat=()=>{
 
 
 return (
-    <Main>
-    <div>
-        <Header>
-        <div id="logo">
-                  <img src="/images/WebMenssagelogo.png" width="150px" alt=""/>
-              </div>
-        <h1>Chat {user? user.email : ''}</h1>
-        
-        
-        </Header>
 
-        <section>
-        <div class="chatBody">
+    <Main>
+            <div class="main">
+                <nav class="navegacao">
+                
+                    <ul class="navegacao-menu">
+                        <li class="navegacao-menu--item"><a href="/main">home</a></li>
+                        <li class="navegacao-menu--item"><a href="/about">about</a></li>
+                    </ul>
+
+                    <button type="button" class="button" id="btnLogout" onClick={()=>{
+                                signOut();
+                     }}>Sair</button>
+                </nav>
+
+                <header>
+                    
+                    <h1 class="bemvindo">Bem vindo, {user?nome : ''}</h1>
+                </header>
+
+                <section class="chat">
+                    <div class="chatBody">
+                        
                         {messages.map((item)=>(
                             
                             <p key={item.id} class="chatContent">{item.nome} diz: {item.mensagem}</p>
@@ -92,17 +100,16 @@ return (
                     </div>
 
                     <div class="envioMensagem">
-                        <input type="text" placeholder="Digite sua mensagem" id="inputMensagem"/>
+                        <input type="text" placeholder="Digite sua mensagem:" id="inputMensagem"/>
                         <button type="button" id="btnEnviaMensagem" class="button" onClick={()=>{
                             handleMessage();
                         }}>Enviar</button>
                     </div>
-        </section>
-           
-        <button type="button" onClick={()=>{signOut()}}>Sair</button>
-    </div>
-    </Main>
-)
-} 
+                </section>
+            </div>
+
+        </Main>
+    );
+}
 
 export default Chat;
