@@ -42,7 +42,7 @@ export const ContainerLogoPharse = styled.div`
 export const ContainerSignIn = styled.div`
     display:flex;
     flex:1;
-    background-color:#ccc;
+    background-color:#e6e;
     min-width:500px;
     align-items:center;
 
@@ -64,7 +64,7 @@ export const ContainerSignIn = styled.div`
     }
 
     #containerLogin #containerButtons .button{
-        border-bottom:4px solid #AE1B73;
+        
         padding-bottom: 10px;
         justify-content:center;
         align-items:center;
@@ -83,6 +83,7 @@ export const ContainerSignIn = styled.div`
     #containerLogin #containerButtons .inativo:hover{
         border-bottom:4px solid #AE1B73;
         color:#673f66;
+        cursor: default;
     }
 
     .box{
@@ -154,7 +155,7 @@ export const ContainerSignIn = styled.div`
 export const Footer = styled.div`
     display:flex;
     height:15vh;
-    background-color:#AE1B73;
+    background-color:#e6e;
 
     #logo{
         flex:1;
