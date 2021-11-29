@@ -59,7 +59,7 @@ let Login=()=>{
               <div id="pharse">
                 <p>Problemas para formar</p>
                 <p>um grupo de trabalho?</p>
-                <p>o Web Menssage resolve!</p>
+                <p>o WebMenssage resolve!</p>
               </div>
             </ContainerLogoPharse>
             
