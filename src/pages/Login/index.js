@@ -112,12 +112,6 @@ let Login=()=>{
             </div>
            </Footer>
        </Main>
-        
-        //<div>
-            //<h1>Login</h1>
-            //<button type="button" onClick={handleCadastrar}>Cadastro</button>
-            //<button type="button" onClick={handleLogin}>Logar</button>
-        //</div>
     )
 } 
 

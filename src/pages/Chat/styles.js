@@ -114,7 +114,7 @@ export const Main = styled.div`
         
     }
     #btnEnviaMensagem:hover{
-        background-color: #3CB371;
+        background-color: #1A5D8D;
         transition: 1s;
         color: white;
     }
